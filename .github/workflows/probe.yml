@@ -1,0 +1,16 @@
+name: CI Host Probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe host
+        run: |
+          set -euo pipefail
+          echo "ARCH=$(uname -m)"
+          echo "OS=$(uname -s)"
+          echo "CPUS=$(nproc)"
+          df -h /
